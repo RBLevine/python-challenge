@@ -1,7 +1,11 @@
 import os
 import csv
 
-budgetData_csv = os.path.join("..", "Resources", "budet_data.csv")
+budgetData_csv = os.path.join("..", "Resources", "budget_data.csv")
+totalProLos=0
+totalMonths=0
+totalChange=0
+lastProLos=0
 
 # Open and read csv
 with open(budgetData_csv) as csv_file:
@@ -15,9 +19,9 @@ with open(budgetData_csv) as csv_file:
     for row in csv_reader:
 
         # Track total number of months in dataset
-
+        totalMonths+=1
         # Track net total amount of Profit/Losses
-
+        totalProLos+=rows[1]
         # Track average change in Profit/Losses
 
         # Track greatest increase in profits (date and amount)
