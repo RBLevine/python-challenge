@@ -26,30 +26,35 @@ with open(electData_csv) as csv_file:
         else:
             electDict[row[2]]=1
         
-#file=open("Analysis","PyPollResults.txt","w")
+
 # Print report
-#file.write("Election Results")
-print("Election Results")
-#file.write("----------------------")
-print("----------------------")
-#file.write(f"Total Votes: {totalVotes}")
-print(f"Total Votes: {totalVotes}")
-#file.write("----------------------")
-print("----------------------")
-for key in electDict:
-    percent="{:.3%}".format(electDict[key]/totalVotes)
-     # Percentage of votes each candidate won
-    # Winner of election based on popular vote
- #   file.write(f"{key}: {percent} ({electDict[key]})")
-    print(f"{key}: {percent} ({electDict[key]})")
-    # Find the winner
-    if electDict[key]>highVote:
-        highVote=electDict[key]
-        highVoteName=key
-#file.write("----------------------")
-print("----------------------")
-#file.write(f"Winner: {highVoteName}")
-print(f"Winner: {highVoteName}")
-#file.write("----------------------")
-print("----------------------")
-#file.close()
+# Specify the file to write to
+output_path = os.path.join("Analysis", "PyPollResults.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w') as txtfile:
+
+    print("Election Results", file=txtfile)
+    print("Election Results")
+    print("----------------------", file=txtfile)
+    print("----------------------")
+    print(f"Total Votes: {totalVotes}", file=txtfile)
+    print(f"Total Votes: {totalVotes}")
+    print("----------------------", file=txtfile)
+    print("----------------------")
+    for key in electDict:
+        percent="{:.3%}".format(electDict[key]/totalVotes)
+        # Percentage of votes each candidate won
+        # Winner of election based on popular vote
+        print(f"{key}: {percent} ({electDict[key]})", file=txtfile)
+        print(f"{key}: {percent} ({electDict[key]})")
+        # Find the winner
+        if electDict[key]>highVote:
+            highVote=electDict[key]
+            highVoteName=key
+    print("----------------------", file=txtfile)
+    print("----------------------")
+    print(f"Winner: {highVoteName}", file=txtfile)
+    print(f"Winner: {highVoteName}")
+    print("----------------------", file=txtfile)
+    print("----------------------")
