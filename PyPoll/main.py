@@ -26,30 +26,30 @@ with open(electData_csv) as csv_file:
         else:
             electDict[row[2]]=1
         
-file=open("Analysis","PyPollResults.txt","w")
+#file=open("Analysis","PyPollResults.txt","w")
 # Print report
-file.write("Election Results")
+#file.write("Election Results")
 print("Election Results")
-file.write("----------------------")
+#file.write("----------------------")
 print("----------------------")
-file.write(f"Total Votes: {totalVotes}")
+#file.write(f"Total Votes: {totalVotes}")
 print(f"Total Votes: {totalVotes}")
-file.write("----------------------")
+#file.write("----------------------")
 print("----------------------")
 for key in electDict:
     percent="{:.3%}".format(electDict[key]/totalVotes)
      # Percentage of votes each candidate won
     # Winner of election based on popular vote
-    file.write(f"{key}: {percent} ({electDict[key]})")
+ #   file.write(f"{key}: {percent} ({electDict[key]})")
     print(f"{key}: {percent} ({electDict[key]})")
     # Find the winner
     if electDict[key]>highVote:
         highVote=electDict[key]
         highVoteName=key
-file.write("----------------------")
+#file.write("----------------------")
 print("----------------------")
-file.write(f"Winner: {highVoteName}")
+#file.write(f"Winner: {highVoteName}")
 print(f"Winner: {highVoteName}")
-file.write("----------------------")
+#file.write("----------------------")
 print("----------------------")
-file.close()
+#file.close()

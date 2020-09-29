@@ -44,10 +44,25 @@ with open(budgetData_csv) as csv_file:
 #calculate average change
 averageChange="%.2f" % (totalChange/(totalMonths-1))
 # Print out results to Terminal
-print("Financial Analysis")
-print("-------------------------")
-print(f"Total Month:{totalMonths}")
-print(f"Total: ${totalProLos}")
-print(f"Average Change: ${averageChange}")
-print(f"Greatest Increase in Profits: {greatProfitMonth} (${greatProfit})")
-print(f"Greatest Decrease in Profits: {greatLossMonth} (${greatLoss})")
+
+
+# Specify the file to write to
+output_path = os.path.join("Analysis", "PyBankResults.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w') as txtfile:
+
+    print("Financial Analysis", file=txtfile)
+    print("Financial Analysis")
+    print("-------------------------", file=txtfile)
+    print("-------------------------")
+    print(f"Total Months: {totalMonths}", file=txtfile)
+    print(f"Total Months: {totalMonths}")
+    print(f"Total: ${totalProLos}", file=txtfile)
+    print(f"Total: ${totalProLos}")
+    print(f"Average Change: ${averageChange}", file=txtfile)
+    print(f"Average Change: ${averageChange}")
+    print(f"Greatest Increase in Profits: {greatProfitMonth} (${greatProfit})", file=txtfile)
+    print(f"Greatest Increase in Profits: {greatProfitMonth} (${greatProfit})")
+    print(f"Greatest Decrease in Profits: {greatLossMonth} (${greatLoss})", file=txtfile)
+    print(f"Greatest Decrease in Profits: {greatLossMonth} (${greatLoss})")
