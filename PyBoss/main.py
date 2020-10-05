@@ -1,8 +1,13 @@
 import os
 import csv
 
+# Create path for the file to be read
 readPath=os.path.join('Resources', 'employee_data.csv')
+
+# Create path for the file to be written to
 writePath=os.path.join('Analysis','updated_employee_data.csv')
+
+# Using dictionary from [Python Dictionary for State Abbreviations](https://gist.github.com/afhaque/29f0f4f37463c447770517a6c17d08f5)
 stateAbbrev = {
     'Alabama': 'AL',
     'Alaska': 'AK',
@@ -65,21 +70,36 @@ with open(writePath, 'w', newline='') as writeFile:
         # CSV reader specifies delimiter and variable that holds contents
         csvreader = csv.reader(readFile, delimiter=',')
 
-        # Read the header row first (skip this step if there is now header)
+        # Read the header row first 
         csv_header = next(csvreader)
+
         # Write the first row (column headers)
         csvwriter.writerow(['Emp ID', 'First Name', 'Last Name','DOB','SSN','State'])
 
         # Read each row of data after the header
         for row in csvreader:
+            
+            # Set empID to exactly what is is read file in column 0
             empID=row[0]
+
+            # Take the name from read file and store as list, separating at the <space>
             name=row[1].split(" ")
+            # Set firstName equal to the first item in the name list
             firstName=name[0]
+            # Set lastName equal to the second itema in the name list
             lastName=name[1]
+
+            # Take the dob from the read file and store as list, separating at the dash
             dob=row[2].split("-")
+            # Reformat the dob to be in the appropriate format
             correctDOB=(f"{dob[1]}/{dob[2]}/{dob[0]}")
+
+            # Take the ssn fromt he read file and store as list, separating at the dash
             ssn=row[3].split("-")
+            # Reformat the ssn so that all but last 4 digits are displayed as *s
             correctSSN=(f"***-**-{ssn[2]}")
+
+            # Store the state from the read file as the abbreviation accessed in the stateAbbrev dictionary
             state=stateAbbrev[row[4]]
             
             # Write into the file
