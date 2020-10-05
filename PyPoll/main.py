@@ -36,12 +36,16 @@ with open(output_path, 'w') as txtfile:
 
     print("Election Results", file=txtfile)
     print("Election Results")
+    
     print("----------------------", file=txtfile)
     print("----------------------")
+
     print(f"Total Votes: {totalVotes}", file=txtfile)
     print(f"Total Votes: {totalVotes}")
+
     print("----------------------", file=txtfile)
     print("----------------------")
+
     for key in electDict:
         percent="{:.3%}".format(electDict[key]/totalVotes)
         # Percentage of votes each candidate won
@@ -54,7 +58,9 @@ with open(output_path, 'w') as txtfile:
             highVoteName=key
     print("----------------------", file=txtfile)
     print("----------------------")
+
     print(f"Winner: {highVoteName}", file=txtfile)
     print(f"Winner: {highVoteName}")
+
     print("----------------------", file=txtfile)
     print("----------------------")

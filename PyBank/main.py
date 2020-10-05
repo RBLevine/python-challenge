@@ -24,8 +24,10 @@ with open(budgetData_csv) as csv_file:
 
         # Track total number of months in dataset
         totalMonths+=1
+
         # Track net total amount of Profit/Losses
         totalProLos+=int(row[1])
+
         # Track average change in Profit/Losses
         if totalMonths==1:
             lastProLos=int(row[1])
@@ -33,14 +35,17 @@ with open(budgetData_csv) as csv_file:
             recentChange=int(row[1])-lastProLos
             totalChange+=recentChange
             lastProLos=int(row[1])
+       
         # Track greatest increase in profits (date and amount)
         if recentChange>greatProfit:
             greatProfit=recentChange
-            greatProfitMonth=str(row[0])           
+            greatProfitMonth=str(row[0])     
+                  
         # Track greatest decrease in losses (date and amount)
         elif recentChange<greatLoss:
             greatLoss=recentChange
             greatLossMonth=str(row[0]) 
+
 #calculate average change
 averageChange="%.2f" % (totalChange/(totalMonths-1))
 # Print out results to Terminal
@@ -52,8 +57,8 @@ output_path = os.path.join("Analysis", "PyBankResults.txt")
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w') as txtfile:
 
-    print("Financial Analysis", file=txtfile)
-    print("Financial Analysis")
+    print("Financial Analysis", file=txtfile) #print to the .txt
+    print("Financial Analysis") #print to terminal
     print("-------------------------", file=txtfile)
     print("-------------------------")
     print(f"Total Months: {totalMonths}", file=txtfile)
